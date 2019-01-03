@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+	 		 	
+	<bean id = "e1" class = "beans.Engine">
+		<property name = "modelyear" value = "2015"></property>
+    </bean>	
+    <bean id = "e2" class = "beans.Engine">
+		<property name = "modelyear" value = "2016"></property>
+    </bean>	
+    <bean id = "e3" class = "beans.Engine">
+		<property name = "modelyear" value = "2017"></property>
+    </bean>	
+    
+    <bean id = "c" class = "beans.Car">
+		<property name = "carname">
+			<list>
+				<value>Audi</value>
+				<value>Honda</value>
+				<value>Suzuki</value>
+			</list>
+		</property>
+		
+		<property name = "engine">
+			<list>
+			<ref bean = "e1"/>
+			<ref bean = "e2"/>
+			<ref bean = "e3"/> 
+			</list> 
+		</property>
+    </bean>	
+</beans>

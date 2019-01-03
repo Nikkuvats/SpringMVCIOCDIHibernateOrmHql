@@ -1,0 +1,35 @@
+package com.learning.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.learning.model.Student;
+
+@Controller
+public class StudentController {
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String printWelcome() {
+
+	return "home";
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView student() {
+		  
+	return new ModelAndView("student", "command", new Student());
+	}
+	  
+	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+	public String addStudent(@ModelAttribute("student") Student student, ModelMap model) {
+		  System.out.println("check");
+	      model.addAttribute("name", student.getName());
+	      model.addAttribute("age", student.getAge());
+	      model.addAttribute("id", student.getId());
+	      return "result";
+	}
+}
